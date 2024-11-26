@@ -58,7 +58,6 @@ pip install pipenv
 ```
 
 #### 2. Install dependencies using Pipfile and Pipfile.lock:
-Use `test-predict.py` to load the saved models and make prediction for the single data point in the script:
 ```bash
 pipenv install --dev
 ```
