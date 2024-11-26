@@ -7,9 +7,7 @@ COPY ["Pipfile", "Pipfile.lock",  "./"]
 RUN pipenv install --system --deploy
 
 COPY ["service.py", "./"]
-COPY ["dict_vectorizer.pkl", "./"]
-COPY ["standard_scaler.pkl", "./"]
-COPY ["xgb_model.pkl", "./"]
+COPY ["model.bin", "./"]
 
 EXPOSE 9696
 

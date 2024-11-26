@@ -3,17 +3,9 @@ import pickle
 
 from flask import Flask, jsonify, request
 
-# Load DictVectorizer
-with open('dict_vectorizer.pkl', 'rb') as f:
-    dv = pickle.load(f)
-
-# Load StandardScaler
-with open('standard_scaler.pkl', 'rb') as f:
-    std_scaler = pickle.load(f)
-
-# Load XGBClassifier
-with open('xgb_model.pkl', 'rb') as f:
-    model = pickle.load(f)
+model_file = "model.bin"
+with open(model_file, 'rb') as f_in:
+    dv, std_scaler, model = pickle.load(f_in)
 
 app = Flask("ad-prediction")
 

@@ -9,7 +9,7 @@ The dataset is taken from here: https://www.kaggle.com/datasets/arashnic/ctr-in-
 ## Features
 - **Data Preprocessing:** Handles missing values, time-based feature extraction, and encoding.
 - **Model Training:** Evaluates Logistic Regression, Decision Trees, Random Forest, and XGBoost.
-- **Hyperparameter Tuning:** Optimizes XGBoost for the best F1 score.
+- **Hyperparameter Tuning:** Optimizes DecisionTree for the best F1 score.
 - **Model Deployment:** Includes Dockerized service and a Python prediction client.
 
 ---
@@ -22,9 +22,7 @@ Use `ad-click-prediction.py` to train the model with the best hyperparameters:
 python ad-click-prediction.py
 ```
 This script saves the model and preprocessors as:
-- `dict_vectorizer.pkl`
-- `standard_scaler.pkl`
-- `xgb_model.pkl`
+- `model.bin`
 
 ### 2. Test the Model
 Use `test-predict.py` to load the saved models and make prediction for the single data point in the script:

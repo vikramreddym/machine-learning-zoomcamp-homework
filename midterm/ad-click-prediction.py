@@ -8,19 +8,13 @@ import numpy as np
 import pandas as pd
 from sklearn.feature_extraction import DictVectorizer
 from sklearn.preprocessing import StandardScaler
-
-from sklearn.linear_model import SGDClassifier
-from sklearn.linear_model import LogisticRegression
-from sklearn.tree import DecisionTreeClassifier     
-from sklearn.ensemble import RandomForestClassifier 
-from xgboost import XGBClassifier
-from sklearn.model_selection import GridSearchCV    
+from sklearn.tree import DecisionTreeClassifier      
 
 import pickle
 from sklearn.model_selection import train_test_split
-from sklearn.model_selection import cross_val_score
-from sklearn.metrics import mutual_info_score, f1_score
-
+from sklearn.metrics import f1_score
+SEED = 42
+np.random.seed(SEED)
 
 
 df = pd.read_csv("Ad_click_prediction_train (1).csv")
@@ -81,25 +75,26 @@ X_test = std_scaler.transform(X_test)
 
 # using the model
 
-xgb = XGBClassifier(learning_rate=0.01, max_depth=7, min_child_weight=5, n_estimators=200, scale_pos_weight=scale_pos_weight)
-xgb.fit(X_train, y_train)
+best_parameters = {'max_depth': 5, 'min_samples_leaf': 1, 'min_samples_split': 2}
+max_depth = best_parameters["max_depth"]
+min_samples_split = best_parameters["min_samples_split"]
+min_samples_leaf = best_parameters["min_samples_leaf"]
 
-y_pred = xgb.predict(X_test)
+negative_class = len(y_train[y_train == 0])
+positive_class = len(y_train[y_train == 1])
+scale_pos_weight = negative_class / positive_class
+
+dt = DecisionTreeClassifier(max_depth=max_depth, min_samples_split=min_samples_split, min_samples_leaf=min_samples_leaf, random_state=SEED, class_weight={0: 1, 1: scale_pos_weight})
+dt.fit(X_train, y_train)
+
+y_pred = dt.predict(X_test)
 print("Test F1 Score:", f1_score(y_test, y_pred))
 
+output_file = "model.bin"
+with open(output_file, 'wb') as f_out:
+    pickle.dump((dv, std_scaler, dt), f_out)
 
-
-# Save DictVectorizer
-with open('dict_vectorizer.pkl', 'wb') as f:
-    pickle.dump(dv, f)
-
-# Save StandardScaler
-with open('standard_scaler.pkl', 'wb') as f:
-    pickle.dump(std_scaler, f)
-
-# Save XGBClassifier
-with open('xgb_model.pkl', 'wb') as f:
-    pickle.dump(xgb, f)
+print("model saved")
 
 
 
