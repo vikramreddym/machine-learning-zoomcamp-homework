@@ -49,5 +49,35 @@ Run the client to send prediction requests to the service:
 ```bash
 python predict_client.py
 ```
+---
+## Virtual Environment Setup (Optional for Local execution)
 
-Check [Documentation](Documentation/documentation.pdf) for more information.
+#### 1. Install pipenv if not already installed:
+```bash
+pip install pipenv
+```
+
+#### 2. Install dependencies using Pipfile and Pipfile.lock:
+Use `test-predict.py` to load the saved models and make prediction for the single data point in the script:
+```bash
+pipenv install --dev
+```
+
+#### 3. Activate the virtual environment:
+```bash
+pipenv shell
+```
+
+#### 4. Run the service locally:
+```bash
+python service.py
+```
+
+#### 5.	Test the Prediction Locally:
+```bash
+python predict_client.py 
+```
+
+---
+## Documentation
+For detailed explanations of the project structure and methodology, check the [Documentation](Documentation/documentation.pdf).
