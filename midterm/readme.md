@@ -1,7 +1,7 @@
 
 # CTR Prediction: Click-Through Rate Prediction Project
 
-This project predicts whether a user will click on an advertisement using demographic, session, and product data. It combines data preprocessing, advanced modeling, and a Dockerized deployment pipeline.
+This project predicts whether a user will click on an advertisement using demographic, session, and product data. It combines data preprocessing, modeling, and a Dockerized deployment.
 The dataset is taken from here: https://www.kaggle.com/datasets/arashnic/ctr-in-advertisement/data
 
 ---
