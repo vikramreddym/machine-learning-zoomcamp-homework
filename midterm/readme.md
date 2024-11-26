@@ -3,6 +3,7 @@
 
 This project predicts whether a user will click on an advertisement using demographic, session, and product data. It combines data preprocessing, advanced modeling, and a Dockerized deployment pipeline.
 The dataset is taken from here: https://www.kaggle.com/datasets/arashnic/ctr-in-advertisement/data
+
 ---
 
 ## Features
