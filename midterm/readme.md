@@ -12,7 +12,10 @@ The dataset is taken from here: https://www.kaggle.com/datasets/arashnic/ctr-in-
 - **Hyperparameter Tuning:** Optimizes DecisionTree for the best F1 score.
 - **Model Deployment:** Includes Dockerized service and a Python prediction client.
 
----
+
+## Pre-requisites
+- Python 3.12 (if running locally)
+- Docker Desktop
 
 ## Usage
 
@@ -75,5 +78,7 @@ Use `test-predict.py` to load the saved models and make prediction for the singl
 ```bash
 python test-predict.py
 ```
+---
+To run the notebook or to run re-training script, setup virtual env using steps from option 2 above and execute it.
 ## Documentation
 For detailed explanations of the project structure and methodology, check the [Documentation](Documentation/documentation.pdf).
