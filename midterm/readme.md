@@ -14,7 +14,7 @@ The dataset is taken from here: https://www.kaggle.com/datasets/arashnic/ctr-in-
 
 
 ## Pre-requisites
-- Python 3.12 (if running locally)
+- Python 3.12 
 - Docker Desktop
 
 ## Usage
