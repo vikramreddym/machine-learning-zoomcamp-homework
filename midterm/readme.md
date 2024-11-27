@@ -16,8 +16,54 @@ The dataset is taken from here: https://www.kaggle.com/datasets/arashnic/ctr-in-
 
 ## Usage
 
+### Option 1 (Docker)
+
+#### a. Build the Docker Image
+```bash
+docker build -t adpred .
+```
+
+#### b. Run the Docker Container
+```bash
+docker run -d -p 9696:9696 adpred
+```
+
+#### c. Use the Client
+Run the client to send prediction requests to the service:
+```bash
+python predict_client.py
+```
+---
+### Option 2 (Local execution)
+
+#### a. Install pipenv if not already installed:
+```bash
+pip install pipenv
+```
+
+#### b. Install dependencies using Pipfile and Pipfile.lock:
+```bash
+pipenv install --dev
+```
+
+#### c. Activate the virtual environment:
+```bash
+pipenv shell
+```
+
+#### d. Run the service locally:
+```bash
+python service.py
+```
+
+#### e.	Test the Prediction Locally:
+```bash
+python predict_client.py 
+```
+---
+### Re-Training
 ### 1. Train the Model
-Use `ad-click-prediction.py` to train the model with the best hyperparameters:
+Update the data if necessary. Use `ad-click-prediction.py` to train the DecisionTree Classifier model with the best hyperparameters:
 ```bash
 python ad-click-prediction.py
 ```
@@ -29,52 +75,5 @@ Use `test-predict.py` to load the saved models and make prediction for the singl
 ```bash
 python test-predict.py
 ```
-
-### 3. Run the Dockerized Service
-
-#### Build the Docker Image
-```bash
-docker build -t adpred .
-```
-
-#### Run the Docker Container
-```bash
-docker run -d -p 9696:9696 adpred
-```
-
-#### Use the Client
-Run the client to send prediction requests to the service:
-```bash
-python predict_client.py
-```
----
-## Virtual Environment Setup (Optional for Local execution)
-
-#### 1. Install pipenv if not already installed:
-```bash
-pip install pipenv
-```
-
-#### 2. Install dependencies using Pipfile and Pipfile.lock:
-```bash
-pipenv install --dev
-```
-
-#### 3. Activate the virtual environment:
-```bash
-pipenv shell
-```
-
-#### 4. Run the service locally:
-```bash
-python service.py
-```
-
-#### 5.	Test the Prediction Locally:
-```bash
-python predict_client.py 
-```
-
----
 ## Documentation
 For detailed explanations of the project structure and methodology, check the [Documentation](Documentation/documentation.pdf).
